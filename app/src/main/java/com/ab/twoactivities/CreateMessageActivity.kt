@@ -20,11 +20,9 @@ class CreateMessageActivity : AppCompatActivity() {
         sendButton.setOnClickListener {
             val message = messageEditText.text.toString()
             if (message.isNotEmpty()) {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.setType("text/plain")
-                intent.putExtra(Intent.EXTRA_TEXT, message)
-                val chosenIntent = Intent.createChooser(intent, "Как вы хотите отправить сообщение?")
-                startActivity(chosenIntent)
+                val intent = Intent(this, ReceivedMessageActivity::class.java)
+                intent.putExtra("message", message)
+                startActivity(intent)
             }
         }
     }
